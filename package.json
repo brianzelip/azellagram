@@ -1,0 +1,14 @@
+{
+  "name": "azellagram",
+  "version": "0.1.0",
+  "description": "Prepare raw Azellaz product photos for production.",
+  "keywords": [
+    "Azellaz.com",
+    "node.js",
+    "electron.js",
+    "image optimization"
+  ],
+  "author": "Brian Zelip <bzelip@protonmail.com> (https://zelip.me/)",
+  "license": "MIT",
+  "scripts": {}
+}
