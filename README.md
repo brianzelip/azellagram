@@ -1,6 +1,6 @@
 # azellagram
 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/brianzelip/azellazgram)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/brianzelip/azellagram)
 
 Prepare raw Azellaz product photos for production.
 
