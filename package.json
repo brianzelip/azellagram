@@ -17,6 +17,7 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.4.4",
+    "jimp": "^0.9.3",
     "vue": "^2.6.10"
   },
   "devDependencies": {
