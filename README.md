@@ -2,30 +2,22 @@
 
 Prepare raw Azellaz product photos for production.
 
-## Project setup
+## Dev server
 
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm start
+```bash
+npm run electron:serve
 ```
 
-### Compiles and minifies for production
+## Build app
 
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
+```bash
+npm run electron:build
 ```
 
-### Customize configuration
+## Author
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[Brian Zelip](https://zelip.me)
+
+## License
+
+MIT
