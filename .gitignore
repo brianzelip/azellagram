@@ -7,3 +7,6 @@ npm-debug.log*
 
 # Editor directories and files
 .vscode
+
+#Electron-builder output
+/dist_electron
