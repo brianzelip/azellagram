@@ -1,21 +1,19 @@
 {
   "name": "azellagram",
   "version": "0.1.0",
-  "description": "Prepare raw Azellaz product photos for production.",
-  "keywords": [
-    "Azellaz.com",
-    "node.js",
-    "electron.js",
-    "image optimization"
-  ],
-  "author": "Brian Zelip <bzelip@protonmail.com> (https://zelip.me/)",
-  "license": "MIT",
   "private": true,
+  "description": "Prepare raw Azellaz product photos for production.",
+  "author": "Brian Zelip <bzelip@protonmail.com> (https://zelip.me/)",
   "scripts": {
-    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "electron:build": "vue-cli-service electron:build",
+    "electron:serve": "vue-cli-service electron:serve",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps",
+    "start": "vue-cli-service serve"
   },
+  "main": "background.js",
   "dependencies": {
     "core-js": "^3.4.4",
     "vue": "^2.6.10"
@@ -25,10 +23,12 @@
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "babel-eslint": "^10.0.3",
+    "electron": "^5.0.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
+    "vue-cli-plugin-electron-builder": "^1.4.4",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -48,5 +48,12 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "keywords": [
+    "Azellaz.com",
+    "node.js",
+    "electron.js",
+    "image optimization"
+  ],
+  "license": "MIT"
 }
