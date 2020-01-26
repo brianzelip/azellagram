@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import jimp from 'jimp';
+
 import TheFileInput from './components/TheFileInput.vue';
 
 export default {
@@ -25,6 +27,19 @@ export default {
   methods: {
     updateFiles(files) {
       this.$set(this, 'files', files);
+
+      // open a file called "yellow.png"
+      this.files.forEach(f => {
+        jimp.read(f, function(err, img) {
+          if (err) throw err;
+          img
+            .resize(500, 500) // resize
+            .quality(70) // set JPEG quality
+            .greyscale() // set greyscale
+            .write(`${f}-XXXXXX`); // save
+          console.log('Resized !!');
+        });
+      });
     }
   }
 };
