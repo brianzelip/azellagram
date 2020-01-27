@@ -1,5 +1,5 @@
 <template lang="pug">
-  main#app.sm-col-8.mx-auto
+  main#app.sm-col-8.mx-auto.p2
     h1 azellagram
     h2.h3 Prepare raw Azellaz product photos for production
     form
@@ -10,7 +10,8 @@
 </template>
 
 <script>
-// import jimp from "jimp";
+/* eslint-disable */
+import Jimp from "jimp/es";
 
 import TheFileInput from "./components/TheFileInput.vue";
 
@@ -35,34 +36,19 @@ export default {
         });
         vm.$set(vm, "files", files);
       }
+
+      fileList.forEach((file, i) => {
+        console.log("fileList[i].path::::::", fileList[i].path);
+        Jimp.read(`${fileList[i].path}`, (err, img) => {
+          if (err) throw err;
+          img
+            .resize(256, 256) // resize
+            .quality(60) // set JPEG quality
+            .greyscale() // set greyscale
+            .write("lena-small-bw.jpg"); // save
+        });
+      });
     }
-    // ,
-    // handleInputFile(file) {
-    //   const vm = this;
-    //   const reader = new FileReader();
-    //   const convertFileToJson = fileContent => {
-    //     vm.csvInput = fileContent;
-    //     CSV({ delimiter: ["\t", ","] })
-    //       .fromString(fileContent)
-    //       .on("header", header => {
-    //         vm.setCsvInputHeaders(header);
-    //       })
-    //       .then(json => {
-    //         vm.setCsvAsJson(json);
-    //       })
-    //       .then(() => {
-    //         vm.currentSelector = "TheHeadersSelector";
-    //       });
-    //   };
-    //   if (typeof file === "string") {
-    //     convertFileToJson(file);
-    //   } else if (typeof file === "object") {
-    //     reader.readAsText(file);
-    //     reader.onload = function(event) {
-    //       convertFileToJson(event.target.result);
-    //     };
-    //   }
-    // }
   }
 };
 </script>
