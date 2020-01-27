@@ -3,19 +3,19 @@
     h1 azellagram
     h2.h3 Prepare raw Azellaz product photos for production
     form
-      TheFileInput(v-on:file-input="updateFiles")
-    ul
+      TheFileInput(v-on:file-select="getToWork")
+    ul(v-if="files.length > 0")
       li(v-for="file, i in files") {{ file }}
     a(href="https://github.com/brianzelip/azellagram") source
 </template>
 
 <script>
-import jimp from 'jimp';
+// import jimp from "jimp";
 
-import TheFileInput from './components/TheFileInput.vue';
+import TheFileInput from "./components/TheFileInput.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     TheFileInput
   },
@@ -25,22 +25,44 @@ export default {
     };
   },
   methods: {
-    updateFiles(files) {
-      this.$set(this, 'files', files);
+    getToWork(fileList) {
+      const vm = this;
 
-      // open a file called "yellow.png"
-      this.files.forEach(f => {
-        jimp.read(f, function(err, img) {
-          if (err) throw err;
-          img
-            .resize(500, 500) // resize
-            .quality(70) // set JPEG quality
-            .greyscale() // set greyscale
-            .write(`${f}-XXXXXX`); // save
-          console.log('Resized !!');
+      if (fileList.length > 0) {
+        const files = [];
+        fileList.forEach(f => {
+          files.push(f.name);
         });
-      });
+        vm.$set(vm, "files", files);
+      }
     }
+    // ,
+    // handleInputFile(file) {
+    //   const vm = this;
+    //   const reader = new FileReader();
+    //   const convertFileToJson = fileContent => {
+    //     vm.csvInput = fileContent;
+    //     CSV({ delimiter: ["\t", ","] })
+    //       .fromString(fileContent)
+    //       .on("header", header => {
+    //         vm.setCsvInputHeaders(header);
+    //       })
+    //       .then(json => {
+    //         vm.setCsvAsJson(json);
+    //       })
+    //       .then(() => {
+    //         vm.currentSelector = "TheHeadersSelector";
+    //       });
+    //   };
+    //   if (typeof file === "string") {
+    //     convertFileToJson(file);
+    //   } else if (typeof file === "object") {
+    //     reader.readAsText(file);
+    //     reader.onload = function(event) {
+    //       convertFileToJson(event.target.result);
+    //     };
+    //   }
+    // }
   }
 };
 </script>
